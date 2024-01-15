@@ -1,0 +1,40 @@
+package: nimble_host
+description: "Host components in the NimBLE stack"
+label: nimble_host
+quality: development
+id: nimble_host
+category: Bluetooth | NimBLE
+provides:
+  - name: "nimble_host"
+
+template_contribution:
+  - name: component_catalog
+    value: nimble_host
+
+include:
+  - path: ./nimble/host/include/host
+    file_list:
+      - path: ble_att.h
+      - path: ble_audio_broadcast.h
+      - path: ble_audio_common.h
+      - path: ble_dtm.h
+      - path: ble_eddystone.h
+      - path: ble_gap.h
+      - path: ble_gatt.h
+      - path: ble_hs_adv.h
+      - path: ble_hs_hci.h
+      - path: ble_hs_id.h
+      - path: ble_hs_log.h
+      - path: ble_hs_mbuf.h
+      - path: ble_hs_stop.h
+      - path: ble_hs.h
+      - path: ble_ibeacon.h
+      - path: ble_iso.h
+      - path: ble_l2cap_h
+      - path: ble_sm.h
+      - path: ble_store.h
+      - path: ble_uuid.h
+
+source:
+  - path: ./nimble/host/src/*.h
+  - path: ./nimble/host/src/*.c

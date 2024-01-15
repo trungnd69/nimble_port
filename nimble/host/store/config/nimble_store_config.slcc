@@ -1,0 +1,26 @@
+package: nimble_store_config
+description: "sys/config-based persistence layer for the NimBLE host"
+label: nimble_store_config
+quality: development
+id: nimble_store_config
+category: Bluetooth | NimBLE | Host | Services
+provides:
+  - name: "nimble_store_config"
+
+require:
+  - name: "nimble_host"
+
+source:
+  - path: ./nimble/host/store/config/src/
+    file_list:
+      - path: "*.c"
+
+include:
+  - path: ./nimble/host/store/config/include/
+    file_list:
+      - path: "*.h"
+
+config_file:
+  - path: ./nimble/host/store/config/include/
+    file_list:
+      - path: nimble_store_config_config.h

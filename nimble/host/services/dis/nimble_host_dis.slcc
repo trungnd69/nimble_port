@@ -1,0 +1,26 @@
+package: nimble_host_dis
+description: "dis service for NimBLE host"
+label: nimble_host_dis
+quality: development
+id: nimble_host_dis
+category: Bluetooth | NimBLE | Host | Services
+provides:
+  - name: "nimble_host_dis"
+
+require:
+  - name: "nimble_host"
+
+source:
+  - path: ./nimble/host/services/dis/src/
+    file_list:
+      - path: "*.c"
+
+include:
+  - path: ./nimble/host/services/dis/include/
+    file_list:
+      - path: "*.h"
+
+config_file:
+  - path: ./nimble/host/services/dis/include/
+    file_list:
+      - path: nimble_host_dis_config.h

@@ -1,0 +1,26 @@
+package: nimble_utils
+description: "ANS service for NimBLE host"
+label: nimble_utils
+quality: development
+id: nimble_utils
+category: Bluetooth | NimBLE | Host | Services
+provides:
+  - name: "nimble_utils"
+
+require:
+  - name: "nimble_host"
+
+source:
+  - path: ./nimble/host/util/src/
+    file_list:
+      - path: "*.c"
+
+include:
+  - path: ./nimble/host/util/include/
+    file_list:
+      - path: "*.h"
+
+config_file:
+  - path: ./nimble/host/util/include/
+    file_list:
+      - path: nimble_utils_config.h

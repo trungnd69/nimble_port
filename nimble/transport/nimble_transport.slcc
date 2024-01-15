@@ -1,0 +1,13 @@
+package: nimble_transport
+description: "Meta-package for NimBLE HCI transport"
+label: nimble_transport
+quality: development
+id: nimble_transport
+category: Bluetooth | NimBLE | Transport
+provides:
+  - name: "nimble_transport"
+
+config_file:
+  - path: ./nimble/transport/include
+    file_list:
+      - path: nimble_transport_config.h

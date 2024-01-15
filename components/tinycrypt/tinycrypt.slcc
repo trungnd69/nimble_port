@@ -1,0 +1,50 @@
+package: tinycrypt
+description: "TinyCrypt Library"
+label: tinycrypt
+quality: production
+id: tinycrypt
+category: Third-party
+provides:
+  - name: "tinycrypt"
+
+template_contribution:
+  - name: component_catalog
+    value: tinycrypt
+
+include:
+  - path: ./ext/tinycrypt/include
+    file_list:
+      - path: aes.h
+      - path: cbc_mode.h
+      - path: ccm.mode.h
+      - path: cmac_mode.h
+      - path: constants.h
+      - path: ctr_mode.h
+      - path: ctr_prng.h
+      - path: ecc_dh.h
+      - path: ecc_dsa.h
+      - path: ecc_platform_specific.h
+      - path: ecc.h
+      - path: hmac_prng.h
+      - path: hmac.h
+      - path: sha256.h
+      - path: utils.h
+
+source:
+  - path: ./ext/tinycrypt/src
+    file_list:
+      - path: aes_decrypt.c
+      - path: aes.encrypt.h
+      - path: cbc_mode.c
+      - path: ccm_mode.c
+      - path: cmac_mode.c
+      - path: ctr_mode.c
+      - path: ctr_prng.c
+      - path: ecc_dh.c
+      - path: ecc_dsa.c
+      - path: ecc_platform_specific.c
+      - path: ecc.c
+      - path: hmac_prng.c
+      - path: hmac.c
+      - path: sha256.c
+      - path: utils.c

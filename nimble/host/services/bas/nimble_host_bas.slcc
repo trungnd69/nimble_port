@@ -1,0 +1,24 @@
+package: nimble_host_bas
+description: "Battery Service for NimBLE host"
+label: "NimBLE Battery Service"
+quality: development
+id: nimble_host_bas
+category: Bluetooth | NimBLE | Host | Services
+provides:
+  - name: "nimble_host_bas"
+
+require:
+  - name: "nimble_host"
+
+source:
+  - path: ./nimble/host/services/bas/src/ble_svc_bas.c
+
+include:
+  - path: ./nimble/host/services/bas/include/services/bas
+    file_list:
+      - path: "ble_svc_bas.h"
+
+config_file:
+  - path: ./nimble/host/services/bas/config
+    file_list:
+      - path: nimble_host_bas_config.h

@@ -1,0 +1,29 @@
+package: NimBLE
+description: "NimBLE Port"
+label: NimBLE
+quality: development
+id: nimble
+category: Bluetooth
+provides:
+  - name: "nimble"
+requires:
+  - name: nimble_porting
+
+template_contribution:
+  - name: component_catalog
+    value: nimble
+
+include:
+  - path: ./nimble/include/nimble
+    file_list:
+      - path: ble.h
+      - path: hci_common.h
+      - path: nimble_npl_log.h
+      - path: nimble_npl.h
+      - path: nimble_opt_auto.h
+      - path: nimble_opt.h
+
+config_file:
+  - path: ./nimble
+    file_list:
+      - path: nimble_syscfg.h

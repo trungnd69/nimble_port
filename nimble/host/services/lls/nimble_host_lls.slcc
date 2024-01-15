@@ -1,0 +1,26 @@
+package: nimble_host_lls
+description: "lls service for NimBLE host"
+label: nimble_host_lls
+quality: development
+id: nimble_host_lls
+category: Bluetooth | NimBLE | Host | Services
+provides:
+  - name: "nimble_host_lls"
+
+require:
+  - name: "nimble_host"
+
+source:
+  - path: ./nimble/host/services/lls/src/
+    file_list:
+      - path: "*.c"
+
+include:
+  - path: ./nimble/host/services/lls/include/
+    file_list:
+      - path: "*.h"
+
+config_file:
+  - path: ./nimble/host/services/lls/include/
+    file_list:
+      - path: nimble_host_lls_config.h

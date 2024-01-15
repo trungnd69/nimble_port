@@ -1,0 +1,26 @@
+package: nimble_host_tps
+description: "tps service for NimBLE host"
+label: nimble_host_tps
+quality: development
+id: nimble_host_tps
+category: Bluetooth | NimBLE | Host | Services
+provides:
+  - name: "nimble_host_tps"
+
+require:
+  - name: "nimble_host"
+
+source:
+  - path: ./nimble/host/services/tps/src/
+    file_list:
+      - path: "*.c"
+
+include:
+  - path: ./nimble/host/services/tps/include/
+    file_list:
+      - path: "*.h"
+
+config_file:
+  - path: ./nimble/host/services/tps/include/
+    file_list:
+      - path: nimble_host_tps_config.h

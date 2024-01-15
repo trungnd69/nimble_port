@@ -1,0 +1,27 @@
+package: nimble_mesh
+description: "BLE Mesh NimBLE subsystem"
+label: nimble_mesh
+quality: development
+id: nimble_mesh
+category: Bluetooth | NimBLE | Host
+provides:
+  - name: "nimble_mesh"
+
+template_contribution:
+  - name: component_catalog
+    value: nimble_mesh
+
+include:
+  - path: ./nimble/host/mesh/include/mesh
+    file_list:
+      - path: "*.h"
+
+source:
+  - path: ./nimble/host/mesh/src
+    file_list:
+      - path: "*.c"
+
+config_file:
+  - path: ./nimble/host/mesh/
+    file_list:
+      - path: nimble_mesh_syscfg.h

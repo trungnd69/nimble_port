@@ -1,0 +1,19 @@
+package: nimble_host_auracast
+description: "Auracast service for NimBLE host"
+label: "Auracast service"
+quality: development
+id: nimble_host_auracast
+category: Bluetooth | NimBLE | Host | Services
+provides:
+  - name: "nimble_host_auracast"
+
+require:
+  - name: "nimble_host"
+
+source:
+  - path: ./nimble/host/services/auracast/src/ble_svc_auracast.c
+
+include:
+  - path: ./nimble/host/services/auracast/include/services/auracast
+    file_list:
+      - path: "ble_svc_auracast.h"

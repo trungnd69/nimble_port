@@ -1,0 +1,24 @@
+package: nimble_host_ans
+description: "Alert Notification service for NimBLE host"
+label: "NimBLE Host's Alert Notification service"
+quality: development
+id: nimble_host_ans
+category: Bluetooth | NimBLE | Host | Services
+provides:
+  - name: "nimble_host_ans"
+
+require:
+  - name: "nimble_host"
+
+source:
+  - path: ./nimble/host/services/ans/src/ble_svc_ans.c
+
+include:
+  - path: ./nimble/host/services/ans/include/services/ans
+    file_list:
+      - path: "ble_svc_ans.h"
+
+config_file:
+  - path: ./nimble/host/services/ans/config
+    file_list:
+      - path: nimble_host_ans_config.h

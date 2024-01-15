@@ -7,13 +7,14 @@ sdk:
   version: 4.3.1
 component_path:
   # Project
+  - path: nimble/
   - path: nimble/host
   - path: nimble/include
   - path: nimble/transport
   # Third Party
   - path: ext/tinycrypt
   - path: ext/liblc3
+  - path: components/tinycrypt/
   # Porting:
   - path: porting/nimble
   - path: porting/npl/freertos
-

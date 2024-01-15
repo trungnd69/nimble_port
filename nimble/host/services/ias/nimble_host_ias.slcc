@@ -1,0 +1,26 @@
+package: nimble_host_ias
+description: "ias service for NimBLE host"
+label: nimble_host_ias
+quality: development
+id: nimble_host_ias
+category: Bluetooth | NimBLE | Host | Services
+provides:
+  - name: "nimble_host_ias"
+
+require:
+  - name: "nimble_host"
+
+source:
+  - path: ./nimble/host/services/ias/src/
+    file_list:
+      - path: "*.c"
+
+include:
+  - path: ./nimble/host/services/ias/include/
+    file_list:
+      - path: "*.h"
+
+config_file:
+  - path: ./nimble/host/services/ias/include/
+    file_list:
+      - path: nimble_host_ias_config.h

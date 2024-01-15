@@ -1,0 +1,27 @@
+package: nimble_host_bleuart
+description: "bleuart service for NimBLE host"
+label: nimble_host_bleuart
+quality: development
+id: nimble_host_bleuart
+category: Bluetooth | NimBLE | Host | Services
+provides:
+  - name: "nimble_host_bleuart"
+
+require:
+  - name: "nimble_host"
+# Dep: kernel/os
+
+source:
+  - path: ./nimble/host/services/bleuart/src/
+    file_list:
+      - path: "*.c"
+
+include:
+  - path: ./nimble/host/services/bleuart/include/
+    file_list:
+      - path: "*.h"
+
+config_file:
+  - path: ./nimble/host/services/bleuart/include/
+    file_list:
+      - path: nimble_host_bleuart_config.h

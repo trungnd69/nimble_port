@@ -1,0 +1,11 @@
+package: nimble_host_services
+description: "Services subsystem for NimBLE host"
+label: nimble_host_services
+quality: development
+id: nimble_host_services
+category: Bluetooth | NimBLE | Host
+provides:
+  - name: "nimble_host_service"
+
+
+# TODO: Finish later
