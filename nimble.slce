@@ -1,0 +1,19 @@
+id: nimble
+version: 0.0.1
+description: "A NimBLE port for the Silicon Labs' chip. This port only supports BLE host"
+label: "NimBLE"
+sdk:
+  id: gecko_sdk
+  version: 4.3.1
+component_path:
+  # Project
+  - path: nimble/host
+  - path: nimble/include
+  - path: nimble/transport
+  # Third Party
+  - path: ext/tinycrypt
+  - path: ext/liblc3
+  # Porting:
+  - path: porting/nimble
+  - path: porting/npl/freertos
+
