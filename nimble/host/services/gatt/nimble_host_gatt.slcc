@@ -1,6 +1,6 @@
 package: nimble_host_gatt
-description: "gatt service for NimBLE host"
-label: nimble_host_gatt
+description: "GATT service for NimBLE host"
+label: "GATT service"
 quality: development
 id: nimble_host_gatt
 category: Bluetooth | NimBLE | Host | Services
@@ -11,16 +11,14 @@ require:
   - name: "nimble_host"
 
 source:
-  - path: ./nimble/host/services/gatt/src/
-    file_list:
-      - path: "*.c"
+  - path: ./nimble/host/services/gatt/src/ble_svc_gatt.c
 
 include:
-  - path: ./nimble/host/services/gatt/include/
+  - path: ./nimble/host/services/gatt/include/services/gatt
     file_list:
-      - path: "*.h"
+      - path: "ble_svc_gatt.h"
 
 config_file:
-  - path: ./nimble/host/services/gatt/include/
+  - path: ./nimble/host/services/gatt/include/services/gatt
     file_list:
       - path: nimble_host_gatt_config.h

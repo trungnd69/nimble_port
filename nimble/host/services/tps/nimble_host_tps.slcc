@@ -1,6 +1,6 @@
 package: nimble_host_tps
-description: "tps service for NimBLE host"
-label: nimble_host_tps
+description: "Tx Power Service for NimBLE host"
+label: "Tx Power Service"
 quality: development
 id: nimble_host_tps
 category: Bluetooth | NimBLE | Host | Services
@@ -11,16 +11,15 @@ require:
   - name: "nimble_host"
 
 source:
-  - path: ./nimble/host/services/tps/src/
-    file_list:
-      - path: "*.c"
+  - path: ./nimble/host/services/tps/src/ble_svc_tpc.c
+
 
 include:
-  - path: ./nimble/host/services/tps/include/
+  - path: ./nimble/host/services/tps/include/services/tps
     file_list:
-      - path: "*.h"
+      - path: "ble_svc_tps.h"
 
 config_file:
-  - path: ./nimble/host/services/tps/include/
+  - path: ./nimble/host/services/tps/include/services/tps
     file_list:
       - path: nimble_host_tps_config.h

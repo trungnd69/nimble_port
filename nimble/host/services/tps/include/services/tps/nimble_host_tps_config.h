@@ -15,28 +15,18 @@
  ******************************************************************************/
 
 
-#ifndef NIMBLE_HOST_ANS_CONFIG_H_
-#define NIMBLE_HOST_ANS_CONFIG_H_
+#ifndef NIMBLE_HOST_TPS_CONFIG_H_
+#define NIMBLE_HOST_TPS_CONFIG_H_
 
 // <<< Use Configuration Wizard in Context Menu >>>
-// <h> Alert Notification Service Server Configurations
+// <h> TPS Service Server Configurations
 
-// <o BLE_SVC_ANS_SYSINIT_STAGE> Sysinit stage for the alert notification service.
+// <o BLE_SVC_TPS_SYSINIT_STAGE> Sysinit stage for the transmit power BLE service.
 // <i> Default: 303
-// <i> Sysinit stage for the alert notification service.
-#define BLE_SVC_ANS_SYSINIT_STAGE    303
-
-// <o BLE_SVC_ANS_NEW_ALERT_CAT> Initial supported new alert category bitmask.
-// <i> Default: 0
-// <i> Initial supported new alert category bitmask.
-#define BLE_SVC_ANS_NEW_ALERT_CAT    0
-
-// <o BLE_SVC_ANS_UNR_ALERT_CAT> Initial supported unread alert category bitmask.
-// <i> Default: 0
-// <i> Initial supported unread alert category bitmask.
-#define BLE_SVC_ANS_UNR_ALERT_CAT    0
+// <i> Sysinit stage for the transmit power BLE service.
+#define BLE_SVC_TPS_SYSINIT_STAGE    303
 
 // </h>
 
 // <<< end of configuration section >>>
-#endif //SAPC_TIME_CLUSTER_CONFIG_H_
+#endif // NIMBLE_HOST_TPS_CONFIG_H_

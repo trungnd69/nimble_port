@@ -15,26 +15,22 @@
  ******************************************************************************/
 
 
-#ifndef NIMBLE_HOST_ANS_CONFIG_H_
-#define NIMBLE_HOST_ANS_CONFIG_H_
+#ifndef NIMBLE_HOST_BLEUART_CONFIG_H_
+#define NIMBLE_HOST_BLEUART_CONFIG_H_
 
 // <<< Use Configuration Wizard in Context Menu >>>
 // <h> Alert Notification Service Server Configurations
 
-// <o BLE_SVC_ANS_SYSINIT_STAGE> Sysinit stage for the alert notification service.
-// <i> Default: 303
-// <i> Sysinit stage for the alert notification service.
-#define BLE_SVC_ANS_SYSINIT_STAGE    303
+// <o BLEUART_SYSINIT_STAGE> Sysinit stage for the BLE UART service.
+// <i> Default: 500
+// <i> Sysinit stage for the BLE UART service.
+#define BLEUART_SYSINIT_STAGE    500
 
-// <o BLE_SVC_ANS_NEW_ALERT_CAT> Initial supported new alert category bitmask.
-// <i> Default: 0
-// <i> Initial supported new alert category bitmask.
-#define BLE_SVC_ANS_NEW_ALERT_CAT    0
 
-// <o BLE_SVC_ANS_UNR_ALERT_CAT> Initial supported unread alert category bitmask.
-// <i> Default: 0
-// <i> Initial supported unread alert category bitmask.
-#define BLE_SVC_ANS_UNR_ALERT_CAT    0
+// <o BLEUART_MAX_INPUT> Number of lines that can be received over UART
+// <i> Default: 120
+// <i> The size of the largest line that can be received over the UART service.
+#define BLEUART_MAX_INPUT    120
 
 // </h>
 

@@ -15,26 +15,16 @@
  ******************************************************************************/
 
 
-#ifndef NIMBLE_HOST_ANS_CONFIG_H_
-#define NIMBLE_HOST_ANS_CONFIG_H_
+#ifndef NIMBLE_HOST_GATT_CONFIG_H_
+#define NIMBLE_HOST_GATT_CONFIG_H_
 
 // <<< Use Configuration Wizard in Context Menu >>>
-// <h> Alert Notification Service Server Configurations
+// <h> GATT Service Implementation Configurations
 
-// <o BLE_SVC_ANS_SYSINIT_STAGE> Sysinit stage for the alert notification service.
-// <i> Default: 303
-// <i> Sysinit stage for the alert notification service.
-#define BLE_SVC_ANS_SYSINIT_STAGE    303
-
-// <o BLE_SVC_ANS_NEW_ALERT_CAT> Initial supported new alert category bitmask.
-// <i> Default: 0
-// <i> Initial supported new alert category bitmask.
-#define BLE_SVC_ANS_NEW_ALERT_CAT    0
-
-// <o BLE_SVC_ANS_UNR_ALERT_CAT> Initial supported unread alert category bitmask.
-// <i> Default: 0
-// <i> Initial supported unread alert category bitmask.
-#define BLE_SVC_ANS_UNR_ALERT_CAT    0
+// <o BLE_SVC_GATT_SYSINIT_STAGE> Sysinit stage for the GATT BLE service
+// <i> Default: 302
+// <i> Sysinit stage for the GATT BLE service
+#define BLE_SVC_GATT_SYSINIT_STAGE    302
 
 // </h>
 

@@ -1,6 +1,6 @@
 package: nimble_host_ias
-description: "ias service for NimBLE host"
-label: nimble_host_ias
+description: "Immediate Alert Service for NimBLE host"
+label: "Immediate Alert Service"
 quality: development
 id: nimble_host_ias
 category: Bluetooth | NimBLE | Host | Services
@@ -13,14 +13,14 @@ require:
 source:
   - path: ./nimble/host/services/ias/src/
     file_list:
-      - path: "*.c"
+      - path: "ble_svc_ias.c"
 
 include:
-  - path: ./nimble/host/services/ias/include/
+  - path: ./nimble/host/services/ias/include/services/ias
     file_list:
-      - path: "*.h"
+      - path: "ble_svc_ias.h"
 
 config_file:
-  - path: ./nimble/host/services/ias/include/
+  - path: ./nimble/host/services/ias/include/services/ias
     file_list:
       - path: nimble_host_ias_config.h

@@ -1,6 +1,6 @@
 package: nimble_host_ipss
-description: "ipss service for NimBLE host"
-label: nimble_host_ipss
+description: "IPSS service for IPSP support NimBLE host"
+label: "IPSS service for IPSP support"
 quality: development
 id: nimble_host_ipss
 category: Bluetooth | NimBLE | Host | Services
@@ -11,16 +11,14 @@ require:
   - name: "nimble_host"
 
 source:
-  - path: ./nimble/host/services/ipss/src/
-    file_list:
-      - path: "*.c"
+  - path: ./nimble/host/services/ipss/src/ble_svc_ipss.c
 
 include:
-  - path: ./nimble/host/services/ipss/include/
+  - path: ./nimble/host/services/ipss/include/services/ipss
     file_list:
-      - path: "*.h"
+      - path: "ble_svc_ipss.h"
 
 config_file:
-  - path: ./nimble/host/services/ipss/include/
+  - path: ./nimble/host/services/ipss/include/services/ipss
     file_list:
       - path: nimble_host_ipss_config.h

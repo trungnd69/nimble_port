@@ -9,17 +9,15 @@ provides:
 
 require:
   - name: "nimble_host"
-# Dep: kernel/os
+# TODO: Dep: kernel/os
 
 source:
-  - path: ./nimble/host/services/bleuart/src/
-    file_list:
-      - path: "*.c"
+  - path: ./nimble/host/services/bleuart/src/bleuart.c
 
 include:
-  - path: ./nimble/host/services/bleuart/include/
+  - path: ./nimble/host/services/bleuart/include/bleuart
     file_list:
-      - path: "*.h"
+      - path: "bleuart.h"
 
 config_file:
   - path: ./nimble/host/services/bleuart/include/
