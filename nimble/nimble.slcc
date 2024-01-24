@@ -7,7 +7,10 @@ category: Bluetooth
 provides:
   - name: "nimble"
 requires:
-  - name: nimble_porting
+  - name:    # - porting/npl/mynewt
+   # - "@apache-mynewt-core/kernel/os"
+  # TODO: Them freertos vao nua
+  # TODO: Kernel core
 
 template_contribution:
   - name: component_catalog
@@ -24,6 +27,6 @@ include:
       - path: nimble_opt.h
 
 config_file:
-  - path: ./nimble
+  - path: ./nimble/include/nimble
     file_list:
       - path: nimble_syscfg.h

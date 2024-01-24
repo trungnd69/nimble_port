@@ -7,9 +7,41 @@ category: Bluetooth | NimBLE
 provides:
   - name: "nimble_host"
 
+# TODO: finish this
+requires:
+    # - "@apache-mynewt-core/kernel/os"
+    # - "@apache-mynewt-core/sys/log/modlog"
+    # - "@apache-mynewt-core/util/mem"
+    # - nimble
+    # - nimble/transport
+# pkg.deps.BLE_SM_LEGACY:
+#     - "@apache-mynewt-core/crypto/tinycrypt"
+
+# pkg.deps.BLE_SM_SC:
+#     - "@apache-mynewt-core/crypto/tinycrypt"
+
+# pkg.deps.BLE_MESH:
+#     - nimble/host/mesh
+
+# pkg.deps.BLE_EATT_CHAN_NUM:
+#     - nimble/host/services/gatt
+
 template_contribution:
   - name: component_catalog
     value: nimble_host
+
+config_file:
+  - path: nimble/host/include/host
+    file_list:
+      - path: nimble_host_config.h
+
+define:
+  # Indicates that a BLE host is present
+  - name: BLE_HOST
+    value: 1
+  # Causes the BLE host to automatically start during system initialization
+  - name: BLE_HS_AUTO_START
+    value: "1"
 
 include:
   - path: ./nimble/host/include/host
@@ -34,7 +66,56 @@ include:
       - path: ble_sm.h
       - path: ble_store.h
       - path: ble_uuid.h
+  - path: nimble/host/src
 
 source:
-  - path: ./nimble/host/src/*.h
-  - path: ./nimble/host/src/*.c
+  - path: ./nimble/host/src/ble_att.c
+  - path: ./nimble/host/src/ble_att_clt.c
+  - path: ./nimble/host/src/ble_att_cmd.c
+  - path: ./nimble/host/src/ble_att_svr.c
+  - path: ./nimble/host/src/ble_audio_broadcast.c
+  - path: ./nimble/host/src/ble_dtm.c
+  - path: ./nimble/host/src/ble_eatt.c
+  - path: ./nimble/host/src/ble_eddystone.c
+  - path: ./nimble/host/src/ble_gap.c
+  - path: ./nimble/host/src/ble_gattc.c
+  - path: ./nimble/host/src/ble_gatts.c
+  - path: ./nimble/host/src/ble_gatts_lcl.c
+  - path: ./nimble/host/src/ble_hs.c
+  - path: ./nimble/host/src/ble_hs_adv.c
+  - path: ./nimble/host/src/ble_hs_atomic.c
+  - path: ./nimble/host/src/ble_hs_cfg.c
+  - path: ./nimble/host/src/ble_hs_conn.c
+  - path: ./nimble/host/src/ble_hs_flow.c
+  - path: ./nimble/host/src/ble_hs_hci.c
+  - path: ./nimble/host/src/ble_hs_hci_cmd.c
+  - path: ./nimble/host/src/ble_hs_hci_evt.c
+  - path: ./nimble/host/src/ble_hs_hci_util.c
+  - path: ./nimble/host/src/ble_hs_id.c
+  - path: ./nimble/host/src/ble_hs_log.c
+  - path: ./nimble/host/src/ble_hs_mbuf.c
+  - path: ./nimble/host/src/ble_hs_misc.c
+  - path: ./nimble/host/src/ble_hs_mqueue.c
+  - path: ./nimble/host/src/ble_hs_periodic_sync.c
+  - path: ./nimble/host/src/ble_hs_pvcy.c
+  - path: ./nimble/host/src/ble_hs_shutdown.c
+  - path: ./nimble/host/src/ble_hs_startup.c
+  - path: ./nimble/host/src/ble_hs_stop.c
+  - path: ./nimble/host/src/ble_ibeacon.c
+  - path: ./nimble/host/src/ble_iso.c
+  - path: ./nimble/host/src/ble_l2cap.c
+  - path: ./nimble/host/src/ble_l2cap_coc.c
+  - path: ./nimble/host/src/ble_l2cap_sig.c
+  - path: ./nimble/host/src/ble_l2cap_sig_cmd.c
+  - path: ./nimble/host/src/ble_sm.c
+  - path: ./nimble/host/src/ble_sm_alg.c
+  - path: ./nimble/host/src/ble_sm_cmd.c
+  - path: ./nimble/host/src/ble_sm_lgcy.c
+  - path: ./nimble/host/src/ble_sm_sc.c
+  - path: ./nimble/host/src/ble_store.c
+  - path: ./nimble/host/src/ble_store_util.c
+  - path: ./nimble/host/src/ble_uuid.c
+
+configuration:
+  - name: MYNEWT_VAL(BLE_TRANSPORT_HS)
+    value: native
