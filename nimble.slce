@@ -12,9 +12,7 @@ component_path:
   - path: nimble/include
   - path: nimble/transport
   # Third Party
-  - path: ext/tinycrypt
-  - path: ext/liblc3
-  - path: components/tinycrypt/
+  - path: ext/components
   # Porting:
   - path: porting/nimble
   - path: porting/npl/freertos

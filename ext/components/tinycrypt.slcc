@@ -1,0 +1,48 @@
+package: tinycrypt
+description: "TinyCrypt Library"
+label: tinycrypt
+quality: production
+id: tinycrypt
+category: Bluetooth | NimBLE | Third-party
+provides:
+  - name: "tinycrypt"
+
+template_contribution:
+  - name: component_catalog
+    value: tinycrypt
+
+include:
+  - path: ./ext/tinycrypt/include
+    file_list:
+      - path: aes.h
+      - path: cbc_mode.h
+      - path: ccm.mode.h
+      - path: cmac_mode.h
+      - path: constants.h
+      - path: ctr_mode.h
+      - path: ctr_prng.h
+      - path: ecc_dh.h
+      - path: ecc_dsa.h
+      - path: ecc_platform_specific.h
+      - path: ecc.h
+      - path: hmac_prng.h
+      - path: hmac.h
+      - path: sha256.h
+      - path: utils.h
+
+source:
+  - path: ./ext/tinycrypt/src/aes_decrypt.c
+  - path: ./ext/tinycrypt/src/aes.encrypt.h
+  - path: ./ext/tinycrypt/src/cbc_mode.c
+  - path: ./ext/tinycrypt/src/ccm_mode.c
+  - path: ./ext/tinycrypt/src/cmac_mode.c
+  - path: ./ext/tinycrypt/src/ctr_mode.c
+  - path: ./ext/tinycrypt/src/ctr_prng.c
+  - path: ./ext/tinycrypt/src/ecc_dh.c
+  - path: ./ext/tinycrypt/src/ecc_dsa.c
+  - path: ./ext/tinycrypt/src/ecc_platform_specific.c
+  - path: ./ext/tinycrypt/src/ecc.c
+  - path: ./ext/tinycrypt/src/hmac_prng.c
+  - path: ./ext/tinycrypt/src/hmac.c
+  - path: ./ext/tinycrypt/src/sha256.c
+  - path: ./ext/tinycrypt/src/utils.c
