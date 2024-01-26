@@ -17,23 +17,23 @@
 #
 
 syscfg.defs:
-    BLE_TRANSPORT_UART_PORT:
+    BLE_TRANSPORT_UART_LL_PORT:
         description: UART index to use for HCI interface
         value: 0
-    BLE_TRANSPORT_UART_BAUDRATE:
+    BLE_TRANSPORT_UART_LL_BAUDRATE:
         description: Baudrate on UART
         value: 1000000
-    BLE_TRANSPORT_UART_DATA_BITS:
+    BLE_TRANSPORT_UART_LL_DATA_BITS:
         description: Number of data bits on UART
         value: 8
-    BLE_TRANSPORT_UART_STOP_BITS:
+    BLE_TRANSPORT_UART_LL_STOP_BITS:
         description: Number of stop bits on UART
         value: 1
-    BLE_TRANSPORT_UART_PARITY:
+    BLE_TRANSPORT_UART_LL_PARITY:
         description: Parity on UART
         value: none
         choices: none,even,odd
-    BLE_TRANSPORT_UART_FLOW_CONTROL:
+    BLE_TRANSPORT_UART_LL_FLOW_CONTROL:
         description: Flow control on UART
         choices: off,rtscts
         value: rtscts

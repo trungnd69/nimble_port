@@ -29,9 +29,7 @@
 #include "nimble/transport.h"
 #include "nimble/transport/hci_h4.h"
 
-#define TX_Q_SIZE   (MYNEWT_VAL(BLE_TRANSPORT_ACL_FROM_LL_COUNT) + \
-                     MYNEWT_VAL(BLE_TRANSPORT_EVT_COUNT) + \
-                     MYNEWT_VAL(BLE_TRANSPORT_EVT_DISCARDABLE_COUNT))
+#define TX_Q_SIZE   (MYNEWT_VAL(BLE_TRANSPORT_ACL_FROM_HS_COUNT) + 1)
 
 struct hci_uart_tx {
     uint8_t type;
@@ -57,12 +55,10 @@ static int
 hci_uart_frame_cb(uint8_t pkt_type, void *data)
 {
     switch (pkt_type) {
-    case HCI_H4_CMD:
-        return ble_transport_to_ll_cmd(data);
+    case HCI_H4_EVT:
+        return ble_transport_to_hs_evt(data);
     case HCI_H4_ACL:
-        return ble_transport_to_ll_acl(data);
-    case HCI_H4_ISO:
-        return ble_transport_to_ll_iso(data);
+        return ble_transport_to_hs_acl(data);
     default:
         assert(0);
         break;
@@ -99,7 +95,7 @@ hci_uart_tx_char(void *arg)
     }
 
     switch (tx->type) {
-    case HCI_H4_EVT:
+    case HCI_H4_CMD:
         ch = tx->buf[tx->idx];
         tx->idx++;
         if (tx->idx == tx->len) {
@@ -174,7 +170,7 @@ hci_uart_configure(void)
 }
 
 int
-ble_transport_to_hs_evt_impl(void *buf)
+ble_transport_to_ll_cmd_impl(void *buf)
 {
     struct hci_uart_tx *txe;
     os_sr_t sr;
@@ -185,9 +181,9 @@ ble_transport_to_hs_evt_impl(void *buf)
         return -ENOMEM;
     }
 
-    txe->type = HCI_H4_EVT;
+    txe->type = HCI_H4_CMD;
     txe->sent_type = 0;
-    txe->len = 2 + ((uint8_t *)buf)[1];
+    txe->len = 3 + ((uint8_t *)buf)[2];
     txe->buf = buf;
     txe->idx = 0;
     txe->om = NULL;
@@ -202,7 +198,7 @@ ble_transport_to_hs_evt_impl(void *buf)
 }
 
 int
-ble_transport_to_hs_acl_impl(struct os_mbuf *om)
+ble_transport_to_ll_acl_impl(struct os_mbuf *om)
 {
     struct hci_uart_tx *txe;
     os_sr_t sr;
@@ -229,36 +225,8 @@ ble_transport_to_hs_acl_impl(struct os_mbuf *om)
     return 0;
 }
 
-int
-ble_transport_to_hs_iso_impl(struct os_mbuf *om)
-{
-    struct hci_uart_tx *txe;
-    os_sr_t sr;
-
-    txe = os_memblock_get(&pool_tx_q);
-    if (!txe) {
-        assert(0);
-        return -ENOMEM;
-    }
-
-    txe->type = HCI_H4_ISO;
-    txe->sent_type = 0;
-    txe->len = OS_MBUF_PKTLEN(om);
-    txe->idx = 0;
-    txe->buf = NULL;
-    txe->om = om;
-
-    OS_ENTER_CRITICAL(sr);
-    STAILQ_INSERT_TAIL(&tx_q, txe, tx_q_next);
-    OS_EXIT_CRITICAL(sr);
-
-    hal_uart_start_tx(MYNEWT_VAL(BLE_TRANSPORT_UART_PORT));
-
-    return 0;
-}
-
 void
-ble_transport_hs_init(void)
+ble_transport_ll_init(void)
 {
     int rc;
 
@@ -271,7 +239,7 @@ ble_transport_hs_init(void)
                          pool_tx_q_buf, "hci_uart_tx_q");
     SYSINIT_PANIC_ASSERT(rc == 0);
 
-    hci_h4_sm_init(&hci_uart_h4sm, &hci_h4_allocs_from_hs, hci_uart_frame_cb);
+    hci_h4_sm_init(&hci_uart_h4sm, &hci_h4_allocs_from_ll, hci_uart_frame_cb);
 
     STAILQ_INIT(&tx_q);
 }
