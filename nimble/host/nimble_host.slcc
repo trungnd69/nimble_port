@@ -7,22 +7,16 @@ category: Bluetooth | NimBLE
 provides:
   - name: "nimble_host"
 
-# TODO: finish this
 requires:
-    # - "@apache-mynewt-core/kernel/os"
-    # - "@apache-mynewt-core/sys/log/modlog"
-    # - "@apache-mynewt-core/util/mem"
-    # - nimble
-    # - nimble/transport
-# pkg.deps.BLE_SM_LEGACY:
-#     - "@apache-mynewt-core/crypto/tinycrypt"
+  - name: nimble_port
+  - name: "nimble_transport"
+  - name: "tinycrypt" # Dep if Use the SM only
 
-# pkg.deps.BLE_SM_SC:
-#     - "@apache-mynewt-core/crypto/tinycrypt"
 
+# TODO: finish this
 # pkg.deps.BLE_MESH:
 #     - nimble/host/mesh
-
+# Use the validator to notify the user to change this and the one below
 # pkg.deps.BLE_EATT_CHAN_NUM:
 #     - nimble/host/services/gatt
 
@@ -115,7 +109,3 @@ source:
   - path: ./nimble/host/src/ble_store.c
   - path: ./nimble/host/src/ble_store_util.c
   - path: ./nimble/host/src/ble_uuid.c
-
-configuration:
-  - name: MYNEWT_VAL(BLE_TRANSPORT_HS)
-    value: native
