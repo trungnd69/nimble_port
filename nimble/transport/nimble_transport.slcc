@@ -7,7 +7,65 @@ category: Bluetooth | NimBLE | Transport
 provides:
   - name: "nimble_transport"
 
+requires:
+  - name: transport_uart_ll
+  - name: nimble_host
+
+# TODO: Use validator script for this one too.
+# pkg.deps.BLE_MONITOR_RTT:
+#     - "@apache-mynewt-core/hw/drivers/rtt"
+
+defines:
+  - name: MYNEWT_VAL_BLE_TRANSPORT
+    value: 1
+  - name: MYNEWT_VAL_BLE_TRANSPORT_HS__native
+    value: 1
+  - name: MYNEWT_VAL_BLE_TRANSPORT_HS__dialog_cmac
+    value: 0
+  - name: MYNEWT_VAL_BLE_TRANSPORT_HS__nrf5340
+    value: 0
+  - name: MYNEWT_VAL_BLE_TRANSPORT_HS__uart
+    value: 0
+  - name: MYNEWT_VAL_BLE_TRANSPORT_HS__usb
+    value: 0
+  - name: MYNEWT_VAL_BLE_TRANSPORT_HS__cdc
+    value: 0
+  - name: MYNEWT_VAL_BLE_TRANSPORT_HS__custom
+    value: 0
+  - name: MYNEWT_VAL_BLE_TRANSPORT_LL__uart_ll
+    value: 1
+  - name: MYNEWT_VAL_BLE_TRANSPORT_LL__dialog_cmac
+    value: 0
+  - name: MYNEWT_VAL_BLE_TRANSPORT_LL__nrf5340
+    value: 0
+  - name: MYNEWT_VAL_BLE_TRANSPORT_LL__emspi
+    value: 0
+  - name: MYNEWT_VAL_BLE_TRANSPORT_LL__socket
+    value: 0
+  - name: MYNEWT_VAL_BLE_TRANSPORT_LL__apollo3
+    value: 0
+  - name: MYNEWT_VAL_BLE_TRANSPORT_LL__custom
+    value: 0
+  - name: MYNEWT_VAL_BLE_TRANSPORT_LL__native
+    value: 0
+
 config_file:
   - path: ./nimble/transport/include
     file_list:
       - path: nimble_transport_config.h
+
+# TODO: Use the validator to validate this
+# syscfg.vals.'BLE_EXT_ADV || BLE_LL_CFG_FEAT_LL_EXT_ADV':
+#     BLE_TRANSPORT_EVT_SIZE: 257
+
+# TODO: Can not use both choices at the same time
+# syscfg.restrictions:
+#     - '!(BLE_MONITOR_UART && BLE_MONITOR_RTT)'
+
+include:
+  - path: include/nimble
+  - path: common/hci_h4/include/nimble/transport
+
+source:
+  - path: common/hci_h4/src/hci_h4.c
+  - path: uart_ll/src/hci_uart.c
