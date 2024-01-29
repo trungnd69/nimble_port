@@ -1,0 +1,35 @@
+package: nimble_porting
+description: "Porting Layer for NimBLE HCI transport"
+label: nimble_porting
+quality: development
+id: nimble_porting
+category: Bluetooth | NimBLE | Porting
+provide:
+  - name: "nimble_porting"
+
+require:
+  - name: 
+
+config_file:
+  - path: ./nimble/transport/include
+    file_list:
+      - path: nimble_transport_config.h
+
+include:
+  - path: nimble/include
+  - path: npl/freertos/include
+
+source:
+  # A minimum part from the MyNewt OS core.
+  - path: nimble/src/endian.c
+  - path: nimble/src/hal_timer.c
+  - path: nimble/src/mem.c
+  - path: nimble/src/nimble_port.c
+  - path: nimble/src/os_cputime.c
+  - path: nimble/src/os_cputime_pwr2.c
+  - path: nimble/src/os_mbuf.c
+  - path: nimble/src/os_mempool.c
+  - path: nimble/src/os_msys_init.c
+  # FreeRTOS Port
+  - path: npl/freertos/src/nimble_port_freertos.c
+  - path: npl/freertos/src/npl_os_freertos.c

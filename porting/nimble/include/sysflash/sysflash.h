@@ -10,6 +10,13 @@
 #define FLASH_AREA_COUNT 6
 
 /**
+ * NOTE
+ * This file would not be used in the porting layer
+ * Silicon labs' chip got a full-defined linker script
+ *
+*/
+
+/**
  * This flash map definition is used for two purposes:
  * 1. To locate the meta area, which contains the true flash map definition.
  * 2. As a fallback in case the meta area cannot be read from flash.
