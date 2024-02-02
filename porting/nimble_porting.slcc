@@ -8,7 +8,7 @@ provide:
   - name: "nimble_porting"
 
 require:
-  - name: 
+  - name: emlib_timer
 
 config_file:
   - path: ./nimble/transport/include
